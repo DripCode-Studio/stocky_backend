@@ -10,90 +10,112 @@ and production planning.
 
 ```mermaid
 erDiagram
-    Fournisseurs ||--o{ ProduitBruts : fournit
-    ProduitBruts ||--o{ CommandesProduitBrut : concerne
-    CommandesProduitBrut }o--|| Fournisseurs : passe_a
 
-    ProduitTransform ||--o{ CommandesProduitTransformer : concerne
-    Clients ||--o{ CommandesProduitTransformer : passe
+    %% =========================
+    %% RELATIONSHIPS
+    %% =========================
 
-    ProduitBruts ||--o{ PlanProduction : utilise
+    Suppliers ||--o{ SupplierRawProducts : supplies
+    RawProducts ||--o{ SupplierRawProducts : sourced_from
 
-    ProduitTransform ||--|| RecettesProduit : a
+    RawProducts ||--o{ RawProductOrders : ordered_in
+    Suppliers ||--o{ RawProductOrders : receives_orders
 
-    ProduitBruts {
-        INTEGER id
-        INTEGER stock_quantity
-        VARCHAR unite_of_measure
-        FLOAT unite_price
-        INTEGER id_fournisseur
-    }
+    FinishedProducts ||--o{ FinishedProductOrders : ordered_in
+    Clients ||--o{ FinishedProductOrders : places
 
-    Fournisseurs {
-        INTEGER id
-        VARCHAR name
-        VARCHAR tel
+    FinishedProducts ||--o{ ProductionPlans : planned_for
+
+    FinishedProducts ||--o{ RecipeItems : composed_of
+    RawProducts ||--o{ RecipeItems : used_in
+
+    %% =========================
+    %% TABLES
+    %% =========================
+
+    Suppliers {
+        INTEGER id NOT NULL
+        VARCHAR name NOT NULL
+        VARCHAR phone
         VARCHAR email
-        VARCHAR web_site
-        VARCHAR person_to_contact
+        VARCHAR website
+        VARCHAR contact_person
     }
 
-    CommandesProduitBrut {
-        INTEGER id
-        INTEGER id_produit
-        INTEGER id_fournisseur
-        DECIMAL prix
-        DATETIME created_at
-        DATE receive_at
-        ENUM status
-        INTEGER quantite
+    RawProducts {
+        INTEGER id NOT NULL
+        VARCHAR name NOT NULL
+        INTEGER stock_quantity NOT NULL
+        VARCHAR unit_of_measure NOT NULL
     }
 
-    ProduitTransform {
-        INTEGER id
-        VARCHAR nom
-        INTEGER stock_quantity
-        VARCHAR unite_of_measure
-        TEXT commentaires
+    SupplierRawProducts {
+        INTEGER supplier_id NOT NULL
+        INTEGER raw_product_id NOT NULL
+        DECIMAL unit_price NOT NULL
+        VARCHAR unit_of_measure NOT NULL
     }
 
-    RecettesProduit {
-        INTEGER id
-        JSON composition
-        INTEGER quantite_produit_trans
+    RawProductOrders {
+        INTEGER id NOT NULL
+        INTEGER raw_product_id NOT NULL
+        INTEGER supplier_id NOT NULL
+        INTEGER quantity NOT NULL
+        DECIMAL price NOT NULL
+        DATETIME ordered_at NOT NULL
+        DATE expected_delivery_date
+        ENUM status NOT NULL
+    }
+
+    FinishedProducts {
+        INTEGER id NOT NULL
+        VARCHAR name NOT NULL
+        INTEGER stock_quantity NOT NULL
+        VARCHAR unit_of_measure NOT NULL
+        TEXT comments
+    }
+
+    RecipeItems {
+        INTEGER finished_product_id NOT NULL
+        INTEGER raw_product_id NOT NULL
+        INTEGER quantity_required NOT NULL
+        VARCHAR unit_of_measure NOT NULL
     }
 
     Clients {
-        INTEGER id
-        VARCHAR name
-        VARCHAR tel
+        INTEGER id NOT NULL
+        VARCHAR name NOT NULL
+        VARCHAR phone
         VARCHAR email
-        VARCHAR web_site
-        VARCHAR person_to_contact
-        ENUM client_type
-        VARCHAR adress
-        VARCHAR ville
+        VARCHAR website
+        VARCHAR contact_person
+        ENUM client_type NOT NULL
+        VARCHAR address
+        VARCHAR city
         VARCHAR region
     }
 
-    CommandesProduitTransformer {
-        INTEGER id
-        INTEGER id_produit
-        INTEGER id_client
-        INTEGER quantite
-        DECIMAL prix
-        DATETIME created_at
-        DATETIME delivered_at
-        ENUM status
+    FinishedProductOrders {
+        INTEGER id NOT NULL
+        INTEGER finished_product_id NOT NULL
+        INTEGER client_id NOT NULL
+        INTEGER quantity NOT NULL
+        DECIMAL sale_price NOT NULL
+        DATETIME ordered_at NOT NULL
+        DATE expected_delivery_date
+        ENUM status NOT NULL
     }
 
-    PlanProduction {
-        INTEGER id
-        INTEGER id_produit
-        INTEGER quantite_plan
-        DATETIME date_plan
-        DECIMAL plan_duration
-        DECIMAL real_duration
+    ProductionPlans {
+        INTEGER id NOT NULL
+        INTEGER finished_product_id NOT NULL
+        INTEGER planned_quantity NOT NULL
+        VARCHAR unit_of_measure NOT NULL
+        DATETIME planned_production_date NOT NULL
+        DECIMAL planned_duration
+        DECIMAL actual_duration
         DECIMAL hourly_rate
     }
+
+
 ```
