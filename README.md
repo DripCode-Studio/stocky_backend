@@ -34,8 +34,8 @@ erDiagram
     %% =========================
 
     Suppliers {
-        INTEGER id NOT NULL
-        VARCHAR name NOT NULL
+        INTEGER id
+        VARCHAR name
         VARCHAR phone
         VARCHAR email
         VARCHAR website
@@ -43,75 +43,75 @@ erDiagram
     }
 
     RawProducts {
-        INTEGER id NOT NULL
-        VARCHAR name NOT NULL
-        INTEGER stock_quantity NOT NULL
-        VARCHAR unit_of_measure NOT NULL
+        INTEGER id
+        VARCHAR name
+        INTEGER stock_quantity
+        VARCHAR unit_of_measure
     }
 
     SupplierRawProducts {
-        INTEGER supplier_id NOT NULL
-        INTEGER raw_product_id NOT NULL
-        DECIMAL unit_price NOT NULL
-        VARCHAR unit_of_measure NOT NULL
+        INTEGER supplier_id
+        INTEGER raw_product_id
+        DECIMAL unit_price
+        VARCHAR unit_of_measure
     }
 
     RawProductOrders {
-        INTEGER id NOT NULL
-        INTEGER raw_product_id NOT NULL
-        INTEGER supplier_id NOT NULL
-        INTEGER quantity NOT NULL
-        DECIMAL price NOT NULL
-        DATETIME ordered_at NOT NULL
+        INTEGER id
+        INTEGER raw_product_id
+        INTEGER supplier_id
+        INTEGER quantity
+        DECIMAL price N
+        DATETIME ordered_at
         DATE expected_delivery_date
-        ENUM status NOT NULL
+        ENUM status
     }
 
     FinishedProducts {
-        INTEGER id NOT NULL
-        VARCHAR name NOT NULL
-        INTEGER stock_quantity NOT NULL
-        VARCHAR unit_of_measure NOT NULL
+        INTEGER id
+        VARCHAR name
+        INTEGER stock_quantity
+        VARCHAR unit_of_measure
         TEXT comments
     }
 
     RecipeItems {
-        INTEGER finished_product_id NOT NULL
-        INTEGER raw_product_id NOT NULL
-        INTEGER quantity_required NOT NULL
-        VARCHAR unit_of_measure NOT NULL
+        INTEGER finished_product_id
+        INTEGER raw_product_id
+        INTEGER quantity_required
+        VARCHAR unit_of_measure
     }
 
     Clients {
-        INTEGER id NOT NULL
-        VARCHAR name NOT NULL
+        INTEGER id
+        VARCHAR name
         VARCHAR phone
         VARCHAR email
         VARCHAR website
         VARCHAR contact_person
-        ENUM client_type NOT NULL
+        ENUM client_type
         VARCHAR address
         VARCHAR city
         VARCHAR region
     }
 
     FinishedProductOrders {
-        INTEGER id NOT NULL
-        INTEGER finished_product_id NOT NULL
-        INTEGER client_id NOT NULL
-        INTEGER quantity NOT NULL
-        DECIMAL sale_price NOT NULL
-        DATETIME ordered_at NOT NULL
+        INTEGER id
+        INTEGER finished_product_id
+        INTEGER client_id
+        INTEGER quantity
+        DECIMAL sale_price
+        DATETIME ordered_at
         DATE expected_delivery_date
-        ENUM status NOT NULL
+        ENUM status
     }
 
     ProductionPlans {
-        INTEGER id NOT NULL
-        INTEGER finished_product_id NOT NULL
-        INTEGER planned_quantity NOT NULL
-        VARCHAR unit_of_measure NOT NULL
-        DATETIME planned_production_date NOT NULL
+        INTEGER id
+        INTEGER finished_product_id
+        INTEGER planned_quantity
+        VARCHAR unit_of_measure
+        DATETIME planned_production_date
         DECIMAL planned_duration
         DECIMAL actual_duration
         DECIMAL hourly_rate
