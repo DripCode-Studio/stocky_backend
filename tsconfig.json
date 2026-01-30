@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    /* Base Options: */
+    "esModuleInterop": true, // Enable interop between TS and JS modules (CommonJS compatibility)
+    "skipLibCheck": true, // Skip type checking for libraries to improve compile times
+    "target": "ESNext", // Use the latest ECMAScript features
+    "allowJs": true, // Allow JavaScript files to be compiled
+    "resolveJsonModule": true, // Enable module resolution for JSON files
+    "moduleDetection": "force", // Force module detection based on import/export usage
+    "isolatedModules": true, // Ensure each file is treated as a separate module
+    "verbatimModuleSyntax": true, // Preserve module syntax as written
+
+    /* Module Resolution: */
+    "lib": ["ESNext"], // Include the latest ECMAScript library
+    "moduleResolution": "node", // Resolve modules using Node.js conventions
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with `export =`
+
+    /* Strictness: */
+    "strict": true, // Enable all strict type checking features
+    "noUncheckedIndexedAccess": true, // Check for undefined in index access results
+    "noImplicitOverride": true, // Ensure methods overriding parent class methods are explicitly marked
+
+    /* Transpilation: */
+    "module": "ESNext", // Use ES modules
+    "outDir": "./dist", // Specify the output directory for compiled files
+    "sourceMap": true, // Generate source maps for easier debugging
+
+    /* Best Practices and Stricter Flags: */
+    "noFallthroughCasesInSwitch": true, // Prevent fallthrough in switch statements
+    "noUnusedLocals": true, // Warn if a local variable is defined but never used
+    "noUnusedParameters": true, // Warn if a function parameter is defined but never used
+    "noPropertyAccessFromIndexSignature": true, // Prevent accessing properties through index signatures
+
+    /* Node.js Options: */
+    "types": ["node"] // This ensures TypeScript understands Node.js types
+  },
+  "include": ["src/**/*.ts"], // Include all TS files in the 'src' directory
+  "exclude": ["node_modules"] // Exclude 'node_modules' directory from compilation
+}
