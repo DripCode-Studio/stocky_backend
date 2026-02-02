@@ -10,7 +10,15 @@ const app = express();
 const PORT = process.env.PORT || 8001;
 
 app.get("/api/v1/", (req: Request, res: Response) => {
-  res.json({ message: "Hello world" });
+  res.json({
+    message: "Welcome to Stocky REST API",
+    description:
+      "An inventory management web application api for any stock client.",
+    author: {
+      name: "DripCode Studio",
+      link: "https://dripcodestudio.com/",
+    },
+  });
 });
 
 app.listen(PORT, () => {
