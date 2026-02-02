@@ -1,4 +1,5 @@
-CREATE DATABASE pere_canuel_db;
+CREATE DATABASE stocky_db
+    DEFAULT CHARACTER SET = 'utf8mb4';
 
 -- =========================
 -- PARENT TABLES
