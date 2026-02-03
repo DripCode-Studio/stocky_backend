@@ -1,0 +1,53 @@
+USE stocky_db;
+
+-- =========================
+-- INSERT MORE CLIENTS (50 additional)
+-- =========================
+
+-- Particuliers additionnels
+INSERT INTO Clients (name, phone, email, website, contact_person, client_type, address, city, region) VALUES
+('François Lefebvre', '5145551010', 'francois.lefebvre@gmail.com', NULL, 'François Lefebvre', 'particulier', '234 Rue Saint-Denis', 'Montréal', 'QC'),
+('Catherine Boucher', '5145551011', 'catherine.boucher@outlook.com', NULL, 'Catherine Boucher', 'particulier', '567 Avenue du Parc', 'Montréal', 'QC'),
+('André Caron', '4185551012', 'andre.caron@gmail.com', NULL, 'André Caron', 'particulier', '89 Rue Grande Allée', 'Québec', 'QC'),
+('Nathalie Ouellet', '8195551013', 'nathalie.ouellet@yahoo.ca', NULL, 'Nathalie Ouellet', 'particulier', '45 Rue Principale', 'Gatineau', 'QC'),
+('Michel Lapointe', '4505551014', 'michel.lapointe@gmail.com', NULL, 'Michel Lapointe', 'particulier', '123 Boulevard Lévesque', 'Laval', 'QC'),
+('Isabelle Fortin', '5145551015', 'isabelle.fortin@hotmail.com', NULL, 'Isabelle Fortin', 'particulier', '678 Rue Sainte-Catherine', 'Montréal', 'QC'),
+('Patrick Girard', '8195551016', 'patrick.girard@gmail.com', NULL, 'Patrick Girard', 'particulier', '90 Rue King Est', 'Sherbrooke', 'QC'),
+('Julie Morin', '4505551017', 'julie.morin@outlook.com', NULL, 'Julie Morin', 'particulier', '234 Rue Cartier', 'Laval', 'QC'),
+('Éric Bélanger', '5145551018', 'eric.belanger@gmail.com', NULL, 'Éric Bélanger', 'particulier', '456 Rue Notre-Dame', 'Montréal', 'QC'),
+('Stéphanie Roy', '4185551019', 'stephanie.roy@yahoo.ca', NULL, 'Stéphanie Roy', 'particulier', '78 Avenue Cartier', 'Québec', 'QC'),
+('Martin Gauthier', '5145551020', 'martin.gauthier@gmail.com', NULL, 'Martin Gauthier', 'particulier', '321 Rue Rachel', 'Montréal', 'QC'),
+('Chantal Côté', '8195551021', 'chantal.cote@hotmail.com', NULL, 'Chantal Côté', 'particulier', '654 Boulevard Saint-Joseph', 'Gatineau', 'QC'),
+('Sylvain Lemieux', '4505551022', 'sylvain.lemieux@gmail.com', NULL, 'Sylvain Lemieux', 'particulier', '987 Rue Curé-Labelle', 'Laval', 'QC'),
+('Caroline Arsenault', '5145551023', 'caroline.arsenault@outlook.com', NULL, 'Caroline Arsenault', 'particulier', '159 Avenue Laurier', 'Montréal', 'QC'),
+('Denis Nadeau', '4185551024', 'denis.nadeau@gmail.com', NULL, 'Denis Nadeau', 'particulier', '753 Rue Saint-Vallier', 'Québec', 'QC'),
+('Épicerie Santé Plus', '5145552010', 'info@santeplus.ca', 'https://santeplus.ca', 'Marie-Claude Simard', 'epicerie', '100 Rue Saint-Laurent', 'Montréal', 'QC'),
+('Marché Bio Local', '4185552011', 'contact@biolocal.ca', 'https://biolocal.ca', 'Philippe Renaud', 'epicerie', '200 Avenue Maguire', 'Québec', 'QC'),
+('Épicerie du Village', '8195552012', 'epicerie@village.ca', NULL, 'Lise Tanguay', 'epicerie', '50 Rue Principale', 'Gatineau', 'QC'),
+('Super Marché Express', '4505552013', 'express@supermarche.ca', 'https://supermarcheexpress.ca', 'Jean-Pierre Lavoie', 'epicerie', '300 Boulevard Chomedey', 'Laval', 'QC'),
+('Alimentation Mondiale', '5145552014', 'info@alimentationmondiale.ca', NULL, 'Amadou Diallo', 'epicerie', '450 Rue Jean-Talon', 'Montréal', 'QC'),
+('Marché des Saveurs', '4185552015', 'saveurs@marche.ca', 'https://marchedessaveurs.ca', 'Geneviève Plante', 'epicerie', '600 Boulevard Charest', 'Québec', 'QC'),
+('Épicerie Fine Gourmet', '5145552016', 'gourmet@epiceriefine.ca', 'https://epiceriefinegourmet.ca', 'Antoine Leblanc', 'epicerie', '789 Rue Sherbrooke Ouest', 'Montréal', 'QC'),
+('Fruits et Légumes Frais', '4505552017', 'frais@flf.ca', NULL, 'Dominique Lessard', 'epicerie', '111 Boulevard des Laurentides', 'Laval', 'QC'),
+('Épicerie Méditerranée', '5145552018', 'med@epiceriemed.ca', 'https://epiceriemed.ca', 'Georges Papadopoulos', 'epicerie', '222 Avenue du Parc', 'Montréal', 'QC'),
+('Marché Asiatique Kim', '5145552019', 'kim@marcheasiatique.ca', 'https://marcheasiatiquekim.ca', 'Kim Nguyen', 'epicerie', '333 Rue de la Gauchetière', 'Montréal', 'QC'),
+('Café Bistro Central', '5145553010', 'info@bistrocentral.ca', 'https://bistrocentral.ca', 'Julie Marchand', 'restaurant', '100 Rue Saint-Paul', 'Montréal', 'QC'),
+('Restaurant La Table', '4185553011', 'reservation@latable.ca', 'https://restaurantlatable.ca', 'François Dubé', 'restaurant', '200 Rue Saint-Jean', 'Québec', 'QC'),
+('Pizzeria Napoli', '5145553012', 'napoli@pizza.ca', 'https://pizzerianapoli.ca', 'Marco Bianchi', 'restaurant', '300 Rue Beaubien', 'Montréal', 'QC'),
+('Restaurant Thai Orchid', '4505553013', 'thai@orchid.ca', NULL, 'Somchai Patel', 'restaurant', '400 Boulevard Curé-Labelle', 'Laval', 'QC'),
+('Bistro du Quartier', '8195553014', 'bistro@quartier.ca', 'https://bistroduquartier.ca', 'Claude Bernier', 'restaurant', '500 Rue Wellington', 'Gatineau', 'QC'),
+('Restaurant Le Parisien', '5145553015', 'parisien@resto.ca', 'https://restaurantleparisien.ca', 'Pierre Fontaine', 'restaurant', '600 Rue Crescent', 'Montréal', 'QC'),
+('Sushi Master', '5145553016', 'master@sushi.ca', 'https://sushimaster.ca', 'Takeshi Yamamoto', 'restaurant', '700 Rue Sainte-Catherine', 'Montréal', 'QC'),
+('Restaurant Indien Taj', '4185553017', 'taj@indien.ca', NULL, 'Raj Sharma', 'restaurant', '800 Boulevard Laurier', 'Québec', 'QC'),
+('Café Terrasse', '5145553018', 'terrasse@cafe.ca', 'https://cafeterrasse.ca', 'Émilie Dufour', 'restaurant', '900 Avenue du Mont-Royal', 'Montréal', 'QC'),
+('Brasserie Belge', '5145553019', 'belge@brasserie.ca', 'https://brasseriebelge.ca', 'Jean Van Der Berg', 'restaurant', '1000 Rue Saint-Denis', 'Montréal', 'QC'),
+('Restaurant Mexicain Sol', '4505553020', 'sol@mexicain.ca', NULL, 'Carlos Rodriguez', 'restaurant', '1100 Boulevard Saint-Martin', 'Laval', 'QC'),
+('Café Viennois', '5145553021', 'viennois@cafe.ca', 'https://cafeviennois.ca', 'Hans Mueller', 'restaurant', '1200 Rue Peel', 'Montréal', 'QC'),
+('Restaurant Grec Olympia', '8195553022', 'olympia@grec.ca', 'https://restaurantolympia.ca', 'Nikos Alexandros', 'restaurant', '1300 Rue Principale', 'Gatineau', 'QC'),
+('Steakhouse Premium', '5145553023', 'steak@premium.ca', 'https://steakhousepremium.ca', 'Robert Johnson', 'restaurant', '1400 Boulevard René-Lévesque', 'Montréal', 'QC'),
+('Restaurant Fruits de Mer', '4185553024', 'mer@fruitsmer.ca', 'https://restaurantfruitsmer.ca', 'Jacques Tremblay', 'restaurant', '1500 Rue du Petit-Champlain', 'Québec', 'QC'),
+('Hôtel Grand Montréal', '5145554010', 'cuisine@grandmontreal.ca', 'https://hotelgrandmontreal.ca', 'Directeur Restauration', 'restaurant', '1600 Rue Sherbrooke', 'Montréal', 'QC'),
+('Centre de Congrès QC', '4185554011', 'events@congresqc.ca', 'https://congresqc.ca', 'Service Traiteur', 'restaurant', '1700 Boulevard Laurier', 'Québec', 'QC'),
+('Université Montréal Cafétéria', '5145554012', 'cafeteria@umontreal.ca', NULL, 'Gestionnaire Services', 'restaurant', '1800 Chemin de la Côte', 'Montréal', 'QC'),
+('Cégep Régional Cafétéria', '4505554013', 'service@cegepregional.ca', NULL, 'Chef Cafétéria', 'restaurant', '1900 Boulevard des Laurentides', 'Laval', 'QC'),
+('Traiteur Événements Plus', '5145554014', 'info@evenementsplus.ca', 'https://traiteur-evenementsplus.ca', 'Sophie Beaumont', 'restaurant', '2000 Rue Notre-Dame', 'Montréal', 'QC');

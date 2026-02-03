@@ -1,0 +1,47 @@
+-- =========================
+-- MASTER SCRIPT - Run all insert scripts in order
+-- =========================
+-- Execute these scripts in numerical order to populate the database
+-- 
+-- Order of execution:
+-- 1. 001_insert_data_into_client_table.sql 
+-- 2. 002_insert_suppliers.sql (20 suppliers)
+-- 3. 003_insert_raw_products.sql (120 raw products)
+-- 4. 004_insert_finished_products.sql (50 finished products)
+-- 5. 005_insert_more_clients.sql (50 additional clients)
+-- 6. 006_insert_supplier_raw_products.sql (supplier-product relationships)
+-- 7. 007_insert_recipe_items.sql (recipes for finished products)
+-- 8. 008_insert_raw_product_orders.sql (100 raw product orders)
+-- 9. 009_insert_production_plans.sql (80 production plans)
+-- 10. 010_insert_finished_product_orders.sql (100 client transactions)
+--
+-- =========================
+-- SUMMARY OF DATA:
+-- =========================
+-- Suppliers: 20
+-- Raw Products: 120 (vegetables, fruits, meats, seafood, dairy, grains, spices)
+-- Finished Products: 50 (prepared dishes, sauces, bakery, desserts, beverages)
+-- Clients: ~70 total (21 existing + 50 new: particuliers, épiceries, restaurants)
+-- Supplier-Product Links: ~85 relationships
+-- Recipe Items: ~120 ingredient mappings
+-- Raw Product Orders: 100 orders (various statuses)
+-- Production Plans: 80 production schedules
+-- Finished Product Orders: 100 client transactions
+-- =========================
+
+-- To run all scripts at once from MySQL command line:
+-- mysql -u your_user -p stocky_db < 001_insert_data_into_client_table.sql
+-- mysql -u your_user -p stocky_db < 002_insert_suppliers.sql
+-- mysql -u your_user -p stocky_db < 003_insert_raw_products.sql
+-- mysql -u your_user -p stocky_db < 004_insert_finished_products.sql
+-- mysql -u your_user -p stocky_db < 005_insert_more_clients.sql
+-- mysql -u your_user -p stocky_db < 006_insert_supplier_raw_products.sql
+-- mysql -u your_user -p stocky_db < 007_insert_recipe_items.sql
+-- mysql -u your_user -p stocky_db < 008_insert_raw_product_orders.sql
+-- mysql -u your_user -p stocky_db < 009_insert_production_plans.sql
+-- mysql -u your_user -p stocky_db < 010_insert_finished_product_orders.sql
+
+-- Or source them from MySQL:
+-- SOURCE 001_insert_data_into_client_table.sql;
+-- SOURCE 002_insert_suppliers.sql;
+-- ... etc.

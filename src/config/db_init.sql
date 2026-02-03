@@ -7,6 +7,7 @@ CREATE DATABASE stocky_db
 
 CREATE TABLE IF NOT EXISTS RawProducts (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
     stock_quantity INT NOT NULL,
     unit_of_measure VARCHAR(5) NOT NULL
 );
