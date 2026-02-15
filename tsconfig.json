@@ -32,7 +32,7 @@
     "noPropertyAccessFromIndexSignature": true, // Prevent accessing properties through index signatures
 
     /* Node.js Options: */
-    "types": ["node"] // This ensures TypeScript understands Node.js types
+    "types": ["node", "bun-types"] // This ensures TypeScript understands Node.js types
   },
   "include": ["src/**/*.ts"], // Include all TS files in the 'src' directory
   "exclude": ["node_modules"] // Exclude 'node_modules' directory from compilation
