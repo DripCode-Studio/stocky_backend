@@ -3,15 +3,15 @@ import {
   sendErrorResponse,
   sendSuccessResponse,
 } from "../../helpers/http-response";
+import { rawProductService } from "../../services/raw-products.services";
 
 export const getAllRawProducts = async (req: Request, res: Response) => {
-  const user = req.user;
+  const allProducts = await rawProductService.getAllRawProducts();
 
-  if (!user) {
-    return sendErrorResponse(res, 404, "User profile not found");
-  }
-
-  return sendSuccessResponse(res, 200, "User profile fetched successfully", {
-    profile: user,
-  });
+  return sendSuccessResponse(
+    res,
+    200,
+    "Raw Products Fetched fetched successfully",
+    allProducts,
+  );
 };
