@@ -12,7 +12,7 @@ const PORT = process.env["PORT"];
 const app = express();
 const corsOption = {
   // origin: process.env["FRONTEND_URL"],
-  origin: "http://localhost:3000",
+  origin: "http://localhost:5173",
   methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   optionsSuccessStatus: 200, // Some legacy browsers choke on 204
