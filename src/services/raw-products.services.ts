@@ -6,4 +6,11 @@ const getAllRawProducts = async () => {
   return products;
 };
 
-export const rawProductService = { getAllRawProducts };
+const create = async () => {
+  // const [result] = await pool.query<ResultSetHeader>(
+  //   "INSERT INTO users (name, email) VALUES (?, ?)",
+  //   [data.name, data.email]
+  // );
+};
+
+export const rawProductService = { getAllRawProducts, create };
