@@ -25,6 +25,7 @@ export interface FinishedProduct {
 export interface Client {
   id?: number;
   name: string;
+  phone: string;
   email?: string;
   website?: string;
   contact_person: string;
