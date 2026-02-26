@@ -77,7 +77,7 @@ export interface FinishedProductOrder {
   client_id: number;
   quantity: number;
   sale_price: number;
-  order_at: Date;
+  ordered_at: Date;
   expected_delivery_date: Date;
   status: "commande" | "expedie" | "recu" | "rupture_de_stock";
 }
