@@ -507,8 +507,8 @@ erDiagram
 ## Author
 
 **DripCode Studio**  
-🔗 [https://dripcodestudio.com/](https://dripcodestudio.com/)
+🔗 [visite here](https://dripcodestudio.com/)
 
 ## License
 
-This project is private and proprietary.
+This project is licensed under the MIT License
