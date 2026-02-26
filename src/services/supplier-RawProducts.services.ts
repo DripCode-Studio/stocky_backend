@@ -13,6 +13,51 @@ const getAllSupplierRawProducts = async () => {
   return rows;
 };
 
-const getByIds = async (supplierId: number, rawProductId: number) => {};
+const getByIds = async (supplierId: number, rawProductId: number) => {
+  const [rows] = await pool.query<RowDataPacket[]>(
+    "SELECT * FROM SupplierRawProducts WHERE supplier_id = ? AND raw_product_id = ?",
+    [supplierId, rawProductId],
+  );
+  return rows[0] || null;
+};
 
-export const SupplierRawProductsService = { getAllSupplierRawProducts };
+const create = async (data: SupplierRawProduct) => {
+  await pool.query<ResultSetHeader>(
+    "INSERT INTO SupplierRawProducts (supplier_id, raw_product_id, unit_price, unit_of_measure) VALUES (?, ?, ?, ?)",
+    [
+      data.supplier_id,
+      data.raw_product_id,
+      data.unit_price,
+      data.unit_of_measure,
+    ],
+  );
+  return data;
+};
+
+const update = async (
+  supplierId: number,
+  rawProductId: number,
+  data: Partial<SupplierRawProduct>,
+) => {
+  const [result] = await pool.query<ResultSetHeader>(
+    "UPDATE SupplierRawProducts SET unit_price = ?, unit_of_measure = ? WHERE supplier_id = ? AND raw_product_id = ?",
+    [data.unit_price, data.unit_of_measure, supplierId, rawProductId],
+  );
+  return result.affectedRows > 0;
+};
+
+const del = async (supplierId: number, rawProductId: number) => {
+  const [result] = await pool.query<ResultSetHeader>(
+    "DELETE FROM SupplierRawProducts WHERE supplier_id = ? AND raw_product_id = ?",
+    [supplierId, rawProductId],
+  );
+  return result.affectedRows > 0;
+};
+
+export const SupplierRawProductsService = {
+  getAllSupplierRawProducts,
+  getByIds,
+  create,
+  update,
+  del,
+};
