@@ -48,7 +48,7 @@ export interface RawProductOrder {
   supplier_id: number;
   quantity: number;
   price: number;
-  order_at: Date;
+  ordered_at: Date;
   expected_delivery_date: Date;
   status: "commande" | "expedie" | "recu" | "rupture_de_stock";
 }
