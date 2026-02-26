@@ -1,25 +1,32 @@
-const finishedProductOrdersRoutes = express.Router();
-finishedProductOrdersRoutes.get(
+import express from "express";
+import asyncHandler from "../../helpers/asyncHandler";
+import { finishedProductOrdersController } from "../../controllers/v1/finished-product-order.controller";
+
+const FinishedProductOrdersRoutes = express.Router();
+
+FinishedProductOrdersRoutes.get(
   "/",
   asyncHandler(finishedProductOrdersController.getAll),
 );
-finishedProductOrdersRoutes.get(
+FinishedProductOrdersRoutes.get(
   "/:id",
   asyncHandler(finishedProductOrdersController.getById),
 );
-finishedProductOrdersRoutes.post(
+FinishedProductOrdersRoutes.post(
   "/",
   asyncHandler(finishedProductOrdersController.create),
 );
-finishedProductOrdersRoutes.put(
+FinishedProductOrdersRoutes.put(
   "/:id",
   asyncHandler(finishedProductOrdersController.update),
 );
-finishedProductOrdersRoutes.patch(
+FinishedProductOrdersRoutes.patch(
   "/:id/status",
   asyncHandler(finishedProductOrdersController.updateStatus),
 );
-finishedProductOrdersRoutes.delete(
+FinishedProductOrdersRoutes.delete(
   "/:id",
-  asyncHandler(finishedProductOrdersController.delete),
+  asyncHandler(finishedProductOrdersController.del),
 );
+
+export default FinishedProductOrdersRoutes;

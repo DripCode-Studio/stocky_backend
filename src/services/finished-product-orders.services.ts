@@ -67,4 +67,19 @@ const del = async (id: number) => {
   return result.affectedRows > 0;
 };
 
-export const finishedProductOrdersServices = {};
+const updateStatus = async (id: number, status: string) => {
+  const [result] = await pool.query<ResultSetHeader>(
+    "UPDATE FinishedProductOrders SET status = ? WHERE id = ?",
+    [status, id],
+  );
+  return result.affectedRows > 0;
+};
+
+export const finishedProductOrdersServices = {
+  getAll: getAllFinishedProductOrders,
+  getById,
+  create,
+  update,
+  updateStatus,
+  delete: del,
+};

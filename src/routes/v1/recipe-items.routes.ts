@@ -1,19 +1,26 @@
-const recipeItemsRoutes = express.Router();
-recipeItemsRoutes.get("/", asyncHandler(recipeItemsController.getAll));
-recipeItemsRoutes.get(
+import express from "express";
+import asyncHandler from "../../helpers/asyncHandler";
+import { recipeItemsController } from "../../controllers/v1/recipe-item.controller";
+
+const RecipeItemsRoutes = express.Router();
+
+RecipeItemsRoutes.get("/", asyncHandler(recipeItemsController.getAll));
+RecipeItemsRoutes.get(
   "/product/:finishedProductId",
   asyncHandler(recipeItemsController.getByFinishedProduct),
 );
-recipeItemsRoutes.get(
+RecipeItemsRoutes.get(
   "/:finishedProductId/:rawProductId",
   asyncHandler(recipeItemsController.getByIds),
 );
-recipeItemsRoutes.post("/", asyncHandler(recipeItemsController.create));
-recipeItemsRoutes.put(
+RecipeItemsRoutes.post("/", asyncHandler(recipeItemsController.create));
+RecipeItemsRoutes.put(
   "/:finishedProductId/:rawProductId",
   asyncHandler(recipeItemsController.update),
 );
-recipeItemsRoutes.delete(
+RecipeItemsRoutes.delete(
   "/:finishedProductId/:rawProductId",
-  asyncHandler(recipeItemsController.delete),
+  asyncHandler(recipeItemsController.del),
 );
+
+export default RecipeItemsRoutes;

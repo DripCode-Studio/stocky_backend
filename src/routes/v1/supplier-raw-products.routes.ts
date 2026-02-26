@@ -1,21 +1,28 @@
-const supplierRawProductsRoutes = express.Router();
-supplierRawProductsRoutes.get(
+import express from "express";
+import asyncHandler from "../../helpers/asyncHandler";
+import { supplierRawProductsController } from "../../controllers/v1/supplier-raw-product.controller";
+
+const SupplierRawProductsRoutes = express.Router();
+
+SupplierRawProductsRoutes.get(
   "/",
   asyncHandler(supplierRawProductsController.getAll),
 );
-supplierRawProductsRoutes.get(
+SupplierRawProductsRoutes.get(
   "/:supplierId/:rawProductId",
   asyncHandler(supplierRawProductsController.getByIds),
 );
-supplierRawProductsRoutes.post(
+SupplierRawProductsRoutes.post(
   "/",
   asyncHandler(supplierRawProductsController.create),
 );
-supplierRawProductsRoutes.put(
+SupplierRawProductsRoutes.put(
   "/:supplierId/:rawProductId",
   asyncHandler(supplierRawProductsController.update),
 );
-supplierRawProductsRoutes.delete(
+SupplierRawProductsRoutes.delete(
   "/:supplierId/:rawProductId",
-  asyncHandler(supplierRawProductsController.delete),
+  asyncHandler(supplierRawProductsController.del),
 );
+
+export default SupplierRawProductsRoutes;

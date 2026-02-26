@@ -79,4 +79,7 @@ export const RawProductOrderService = {
   getAllRawProductOrders,
   getById,
   create,
+  update,
+  updateStatus,
+  del,
 };

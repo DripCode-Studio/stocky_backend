@@ -3,7 +3,7 @@ import { HttpError } from "../../error/httpError";
 import { sendSuccessResponse } from "../../helpers/http-response";
 import { rawProductService } from "../../services/raw-products.services";
 
-const getAll = async (req: Request, res: Response) => {
+const getAll = async (_req: Request, res: Response) => {
   const data = await rawProductService.getAllRawProducts();
   return sendSuccessResponse(
     res,

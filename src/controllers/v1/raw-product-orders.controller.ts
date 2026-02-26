@@ -1,107 +1,124 @@
-const rawProductOrdersController = {
-  async getAll(req: Request, res: Response) {
-    const data = await rawProductOrdersService.getAll();
-    return sendSuccess(
-      res,
-      200,
-      "Raw product orders fetched successfully",
-      data,
-    );
-  },
+import type { Request, Response } from "express";
+import { HttpError } from "../../error/httpError";
+import { sendSuccessResponse } from "../../helpers/http-response";
+import { RawProductOrderService } from "../../services/raw-product-order.services";
 
-  async getById(req: Request, res: Response) {
-    const { id } = req.params;
-    const data = await rawProductOrdersService.getById(Number(id));
-    if (!data) throw new HttpError(404, "Raw product order not found");
-    return sendSuccess(
-      res,
-      200,
-      "Raw product order fetched successfully",
-      data,
-    );
-  },
+const getAll = async (_req: Request, res: Response) => {
+  const data = await RawProductOrderService.getAllRawProductOrders();
+  return sendSuccessResponse(
+    res,
+    200,
+    "Raw product orders fetched successfully",
+    data,
+  );
+};
 
-  async create(req: Request, res: Response) {
-    const {
-      raw_product_id,
-      supplier_id,
-      quantity,
-      price,
-      ordered_at,
-      expected_delivery_date,
-      status,
-    } = req.body;
-    if (
-      !raw_product_id ||
-      !supplier_id ||
-      quantity === undefined ||
-      price === undefined ||
-      !ordered_at ||
-      !expected_delivery_date
-    ) {
-      throw new HttpError(400, "Missing required fields");
-    }
-    const data = await rawProductOrdersService.create({
-      raw_product_id,
-      supplier_id,
-      quantity,
-      price,
-      ordered_at,
-      expected_delivery_date,
-      status,
-    });
-    return sendSuccess(
-      res,
-      201,
-      "Raw product order created successfully",
-      data,
-    );
-  },
+const getById = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const data = await RawProductOrderService.getById(Number(id));
+  if (!data) throw new HttpError(404, "Raw product order not found");
+  return sendSuccessResponse(
+    res,
+    200,
+    "Raw product order fetched successfully",
+    data,
+  );
+};
 
-  async update(req: Request, res: Response) {
-    const { id } = req.params;
-    const {
-      raw_product_id,
-      supplier_id,
-      quantity,
-      price,
-      ordered_at,
-      expected_delivery_date,
-      status,
-    } = req.body;
-    const updated = await rawProductOrdersService.update(Number(id), {
-      raw_product_id,
-      supplier_id,
-      quantity,
-      price,
-      ordered_at,
-      expected_delivery_date,
-      status,
-    });
-    if (!updated) throw new HttpError(404, "Raw product order not found");
-    return sendSuccess(res, 200, "Raw product order updated successfully");
-  },
+const create = async (req: Request, res: Response) => {
+  const {
+    raw_product_id,
+    supplier_id,
+    quantity,
+    price,
+    ordered_at,
+    expected_delivery_date,
+    status,
+  } = req.body;
+  if (
+    !raw_product_id ||
+    !supplier_id ||
+    quantity === undefined ||
+    price === undefined ||
+    !ordered_at ||
+    !expected_delivery_date
+  ) {
+    throw new HttpError(400, "Missing required fields");
+  }
+  const data = await RawProductOrderService.create({
+    raw_product_id,
+    supplier_id,
+    quantity,
+    price,
+    ordered_at,
+    expected_delivery_date,
+    status,
+  });
+  return sendSuccessResponse(
+    res,
+    201,
+    "Raw product order created successfully",
+    data,
+  );
+};
 
-  async updateStatus(req: Request, res: Response) {
-    const { id } = req.params;
-    const { status } = req.body;
-    if (!status) throw new HttpError(400, "Status is required");
-    const updated = await rawProductOrdersService.updateStatus(
-      Number(id),
-      status,
-    );
-    if (!updated) throw new HttpError(404, "Raw product order not found");
-    return sendSuccess(
-      res,
-      200,
-      "Raw product order status updated successfully",
-    );
-  },
+const update = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const {
+    raw_product_id,
+    supplier_id,
+    quantity,
+    price,
+    ordered_at,
+    expected_delivery_date,
+    status,
+  } = req.body;
+  const updated = await RawProductOrderService.update(Number(id), {
+    raw_product_id,
+    supplier_id,
+    quantity,
+    price,
+    ordered_at,
+    expected_delivery_date,
+    status,
+  });
+  if (!updated) throw new HttpError(404, "Raw product order not found");
+  return sendSuccessResponse(
+    res,
+    200,
+    "Raw product order updated successfully",
+  );
+};
 
-  async delete(req: Request, res: Response) {
-    const { id } = req.params;
-    const deleted = await rawProductOrdersService.delete(Number(id));
-    if (!deleted) throw new HttpError(404, "Raw product order not found");
-    return sendSuccess(res, 200, "Raw product order deleted successfully");
-  },
+const updateStatus = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { status } = req.body;
+  if (!status) throw new HttpError(400, "Status is required");
+  const updated = await RawProductOrderService.updateStatus(Number(id), status);
+  if (!updated) throw new HttpError(404, "Raw product order not found");
+  return sendSuccessResponse(
+    res,
+    200,
+    "Raw product order status updated successfully",
+  );
+};
+
+const del = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const deleted = await RawProductOrderService.del(Number(id));
+  if (!deleted) throw new HttpError(404, "Raw product order not found");
+  return sendSuccessResponse(
+    res,
+    200,
+    "Raw product order deleted successfully",
+  );
+};
+
+export const rawProductOrdersController = {
+  getAll,
+  getById,
+  create,
+  update,
+  updateStatus,
+  del,
 };

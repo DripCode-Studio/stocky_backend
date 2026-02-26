@@ -1,10 +1,17 @@
-const suppliersRoutes = express.Router();
-suppliersRoutes.get("/", asyncHandler(suppliersController.getAll));
-suppliersRoutes.get("/:id", asyncHandler(suppliersController.getById));
-suppliersRoutes.get(
+import express from "express";
+import asyncHandler from "../../helpers/asyncHandler";
+import { suppliersController } from "../../controllers/v1/suppliers.controller";
+
+const SuppliersRoutes = express.Router();
+
+SuppliersRoutes.get("/", asyncHandler(suppliersController.getAll));
+SuppliersRoutes.get("/:id", asyncHandler(suppliersController.getById));
+SuppliersRoutes.get(
   "/:id/raw-products",
   asyncHandler(suppliersController.getRawProducts),
 );
-suppliersRoutes.post("/", asyncHandler(suppliersController.create));
-suppliersRoutes.put("/:id", asyncHandler(suppliersController.update));
-suppliersRoutes.delete("/:id", asyncHandler(suppliersController.delete));
+SuppliersRoutes.post("/", asyncHandler(suppliersController.create));
+SuppliersRoutes.put("/:id", asyncHandler(suppliersController.update));
+SuppliersRoutes.delete("/:id", asyncHandler(suppliersController.del));
+
+export default SuppliersRoutes;

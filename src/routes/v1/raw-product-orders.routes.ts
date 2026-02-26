@@ -1,25 +1,32 @@
-const rawProductOrdersRoutes = express.Router();
-rawProductOrdersRoutes.get(
+import express from "express";
+import asyncHandler from "../../helpers/asyncHandler";
+import { rawProductOrdersController } from "../../controllers/v1/raw-product-orders.controller";
+
+const RawProductOrdersRoutes = express.Router();
+
+RawProductOrdersRoutes.get(
   "/",
   asyncHandler(rawProductOrdersController.getAll),
 );
-rawProductOrdersRoutes.get(
+RawProductOrdersRoutes.get(
   "/:id",
   asyncHandler(rawProductOrdersController.getById),
 );
-rawProductOrdersRoutes.post(
+RawProductOrdersRoutes.post(
   "/",
   asyncHandler(rawProductOrdersController.create),
 );
-rawProductOrdersRoutes.put(
+RawProductOrdersRoutes.put(
   "/:id",
   asyncHandler(rawProductOrdersController.update),
 );
-rawProductOrdersRoutes.patch(
+RawProductOrdersRoutes.patch(
   "/:id/status",
   asyncHandler(rawProductOrdersController.updateStatus),
 );
-rawProductOrdersRoutes.delete(
+RawProductOrdersRoutes.delete(
   "/:id",
-  asyncHandler(rawProductOrdersController.delete),
+  asyncHandler(rawProductOrdersController.del),
 );
+
+export default RawProductOrdersRoutes;

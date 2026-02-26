@@ -67,6 +67,7 @@ const getRawProductsBySupplierId = async (supplierId: number) => {
     WHERE srp.supplier_id = ?`,
     [supplierId],
   );
+  return products;
 };
 
 export const SupplierService = {

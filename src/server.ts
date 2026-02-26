@@ -4,6 +4,14 @@ import cors from "cors";
 import { errorHandler } from "./middlewares/error.middleware";
 import type { Request, Response } from "express";
 import RawProductsRoutes from "./routes/v1/raw-products.routes";
+import SuppliersRoutes from "./routes/v1/suppliers.routes";
+import FinishedProductsRoutes from "./routes/v1/finished-products.routes";
+import ClientsRoutes from "./routes/v1/client.routes";
+import SupplierRawProductsRoutes from "./routes/v1/supplier-raw-products.routes";
+import RawProductOrdersRoutes from "./routes/v1/raw-product-orders.routes";
+import RecipeItemsRoutes from "./routes/v1/recipe-items.routes";
+import ProductionPlansRoutes from "./routes/v1/production-plan.routes";
+import FinishedProductOrdersRoutes from "./routes/v1/finished-product-orders.routes";
 
 dotenv.config();
 
@@ -13,29 +21,29 @@ const app = express();
 const corsOption = {
   // origin: process.env["FRONTEND_URL"],
   origin: "http://localhost:5173",
-  methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Specify allowed HTTP methods
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   optionsSuccessStatus: 200, // Some legacy browsers choke on 204
 };
 
-// middleswares
+// middlewares
 app.use(express.json());
 app.use(cors(corsOption));
 app.options(/.*/, cors(corsOption));
 
 // API Routes
 app.use("/api/v1/raw-products", RawProductsRoutes);
-app.use("/api/v1/suppliers", suppliersRoutes);
-app.use("/api/v1/finished-products", finishedProductsRoutes);
-app.use("/api/v1/clients", clientsRoutes);
-app.use("/api/v1/supplier-raw-products", supplierRawProductsRoutes);
-app.use("/api/v1/raw-product-orders", rawProductOrdersRoutes);
-app.use("/api/v1/recipe-items", recipeItemsRoutes);
-app.use("/api/v1/production-plans", productionPlansRoutes);
-app.use("/api/v1/finished-product-orders", finishedProductOrdersRoutes);
+app.use("/api/v1/suppliers", SuppliersRoutes);
+app.use("/api/v1/finished-products", FinishedProductsRoutes);
+app.use("/api/v1/clients", ClientsRoutes);
+app.use("/api/v1/supplier-raw-products", SupplierRawProductsRoutes);
+app.use("/api/v1/raw-product-orders", RawProductOrdersRoutes);
+app.use("/api/v1/recipe-items", RecipeItemsRoutes);
+app.use("/api/v1/production-plans", ProductionPlansRoutes);
+app.use("/api/v1/finished-product-orders", FinishedProductOrdersRoutes);
 
 // Root endpoint
-app.get("/api/v1/", (req: Request, res: Response) => {
+app.get("/api/v1/", (_req: Request, res: Response) => {
   res.json({
     message: "Welcome to Stocky REST API v1.0",
     description: "An inventory management REST API for any stock client.",
