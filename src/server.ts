@@ -24,7 +24,7 @@ app.use(cors(corsOption));
 app.options(/.*/, cors(corsOption));
 
 // API Routes
-app.use("/api/v1/raw-products", rawProductsRoutes);
+app.use("/api/v1/raw-products", RawProductsRoutes);
 app.use("/api/v1/suppliers", suppliersRoutes);
 app.use("/api/v1/finished-products", finishedProductsRoutes);
 app.use("/api/v1/clients", clientsRoutes);
