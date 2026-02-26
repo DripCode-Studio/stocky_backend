@@ -1,0 +1,21 @@
+const supplierRawProductsRoutes = express.Router();
+supplierRawProductsRoutes.get(
+  "/",
+  asyncHandler(supplierRawProductsController.getAll),
+);
+supplierRawProductsRoutes.get(
+  "/:supplierId/:rawProductId",
+  asyncHandler(supplierRawProductsController.getByIds),
+);
+supplierRawProductsRoutes.post(
+  "/",
+  asyncHandler(supplierRawProductsController.create),
+);
+supplierRawProductsRoutes.put(
+  "/:supplierId/:rawProductId",
+  asyncHandler(supplierRawProductsController.update),
+);
+supplierRawProductsRoutes.delete(
+  "/:supplierId/:rawProductId",
+  asyncHandler(supplierRawProductsController.delete),
+);

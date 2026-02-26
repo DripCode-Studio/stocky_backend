@@ -1,0 +1,24 @@
+const finishedProductsRoutes = express.Router();
+finishedProductsRoutes.get(
+  "/",
+  asyncHandler(finishedProductsController.getAll),
+);
+finishedProductsRoutes.get(
+  "/:id",
+  asyncHandler(finishedProductsController.getById),
+);
+finishedProductsRoutes.get(
+  "/:id/recipe",
+  asyncHandler(finishedProductsController.getRecipe),
+);
+finishedProductsRoutes.post(
+  "/",
+  asyncHandler(finishedProductsController.create),
+);
+finishedProductsRoutes.put(
+  "/:id",
+  asyncHandler(finishedProductsController.update),
+);
+finishedProductsRoutes.delete(
+  "/:id",
+  asyncHandler(finishedProductsController.delete),

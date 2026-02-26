@@ -1,0 +1,25 @@
+const rawProductOrdersRoutes = express.Router();
+rawProductOrdersRoutes.get(
+  "/",
+  asyncHandler(rawProductOrdersController.getAll),
+);
+rawProductOrdersRoutes.get(
+  "/:id",
+  asyncHandler(rawProductOrdersController.getById),
+);
+rawProductOrdersRoutes.post(
+  "/",
+  asyncHandler(rawProductOrdersController.create),
+);
+rawProductOrdersRoutes.put(
+  "/:id",
+  asyncHandler(rawProductOrdersController.update),
+);
+rawProductOrdersRoutes.patch(
+  "/:id/status",
+  asyncHandler(rawProductOrdersController.updateStatus),
+);
+rawProductOrdersRoutes.delete(
+  "/:id",
+  asyncHandler(rawProductOrdersController.delete),
+);
